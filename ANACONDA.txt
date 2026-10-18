@@ -1,0 +1,147 @@
+C:\Users\User> conda --version
+conda 25.5.1
+
+C:\Users\User> conda info
+     active environment : base
+    active env location : C:\Users\User\anaconda3
+            shell level : 1
+       user config file : C:\Users\User\.condarc
+ populated config files : C:\Users\User\.condarc
+          conda version : 25.5.1
+    python version : 3.12.x
+          base environment : C:\Users\User\anaconda3
+
+C:\Users\User> conda env list
+# conda environments:
+#
+base                  *  C:\Users\User\anaconda3
+
+C:\Users\User> conda create -n myenv python=3.12
+Channels:
+ - defaults
+Platform: win-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+## Package Plan ##
+  environment location: C:\Users\User\anaconda3\envs\myenv
+  added / updated specs:
+    - python=3.12
+Proceed ([y]/n)? y
+Downloading and Extracting Packages: done
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     conda activate myenv
+
+C:\Users\User> conda activate myenv
+(myenv) C:\Users\User>
+
+(myenv) C:\Users\User> python --version
+Python 3.12.x
+
+(myenv) C:\Users\User> python
+Python 3.12.x | packaged by Anaconda, Inc. | (main, ...) [MSC v.19.xx 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> print("Hello World")
+Hello World
+>>> exit()
+
+(myenv) C:\Users\User> conda install numpy
+Channels:
+ - defaults
+Platform: win-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+## Package Plan ##
+  environment location: C:\Users\User\anaconda3\envs\myenv
+  added / updated specs:
+    - numpy
+Proceed ([y]/n)? y
+Downloading and Extracting Packages: done
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+(myenv) C:\Users\User> python -c "import numpy; print(numpy.__version__)"
+2.x.x
+
+(myenv) C:\Users\User> conda list
+# packages in environment at C:\Users\User\anaconda3\envs\myenv:
+#
+# Name                    Version
+numpy                     2.x.x
+python                    3.12.x
+pip                       xx.x
+
+(myenv) C:\Users\User> python -m pip --version
+pip xx.x from C:\Users\User\anaconda3\envs\myenv\Lib\site-packages\pip (python 3.12)
+
+(myenv) C:\Users\User> python -m pip install requests
+Collecting requests
+  Downloading requests-2.x.x-py3-none-any.whl
+Installing collected packages: requests
+Successfully installed requests-2.x.x
+
+(myenv) C:\Users\User> python -m pip show requests
+Name: requests
+Version: 2.x.x
+Summary: Python HTTP for Humans
+Location: C:\Users\User\anaconda3\envs\myenv\Lib\site-packages
+Requires: certifi, charset_normalizer, idna, urllib3
+
+(myenv) C:\Users\User> python -m pip list
+Package            Version
+------------------ -------
+numpy              2.x.x
+pip                xx.x
+requests           2.x.x
+
+(myenv) C:\Users\User> python -m pip list --outdated
+Package    Version    Latest    Type
+---------  ---------  --------  ----
+requests   2.x.x      2.x.x     wheel
+
+(myenv) C:\Users\User> python -m pip install --upgrade requests
+Requirement already satisfied: requests in ... (2.x.x)
+
+(myenv) C:\Users\User> conda search pandas
+Loading channels: done
+# Name                       Version           Build
+pandas                       2.x.x             ...
+pandas                       2.x.x             ...
+
+(myenv) C:\Users\User> conda install pandas
+Proceed ([y]/n)? y
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+(myenv) C:\Users\User> python -c "import pandas; print(pandas.__version__)"
+2.x.x
+
+(myenv) C:\Users\User> python -c "import sys; print(sys.executable)"
+C:\Users\User\anaconda3\envs\myenv\python.exe
+
+(myenv) C:\Users\User> conda deactivate
+C:\Users\User>
+
+C:\Users\User> conda env list
+# conda environments:
+#
+base                  *  C:\Users\User\anaconda3
+myenv                    C:\Users\User\anaconda3\envs\myenv
+
+C:\Users\User> conda remove -n myenv --all
+Remove all packages in environment C:\Users\User\anaconda3\envs\myenv:
+Proceed ([y]/n)? y
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+C:\Users\User> conda env list
+# conda environments:
+#
+base                  *  C:\Users\User\anaconda3
